@@ -18,7 +18,7 @@ function Login(){
             <Grid alignItems='center' xs={6}>
                 <Box paddingX={20}>
                     <form>
-                        <Typography variant='h3' color='textPrimary' component='h3' align='center' gutterBottom style={{fontWeight:'bold'}} > Entrar</Typography>
+                        <Typography  variant='h3' color='textPrimary' component='h3' align='center' gutterBottom  className="textos1" > Entrar </Typography>
                         <TextField id='usuario' label='usuário' variant='outlined' name='usuario' margin='normal' fullWidth /> 
                         <TextField id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth /> 
 
@@ -36,14 +36,14 @@ function Login(){
                         <Box marginRight={1}>
                             <Typography variant="subtitle1" align="center" gutterBottom  >Não tem uma conta?</Typography>
                         </Box>
-                            <Typography variant="subtitle1" align="center" style={{fontWeight:"bold"}} gutterBottom > Cadastre-se</Typography>
+                            <Typography variant="subtitle1" align="center" gutterBottom className="textos1" > Cadastre-se</Typography>
                     </Box>
 
                 </Box>
             </Grid>
 
             {/* 2° tela do login */}
-            <Grid xs={6} style={{backgroundImage:`url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0IT-OyaoYNWvvTHibh_SlFllf9E70TdJcmw&usqp=CAU)`, backgroundRepeat:"no-repeat", width:"100vh", minHeight:"100vh", backgroundSize:"cover", backgroundPosition:"center"}} >
+            <Grid xs={6} className="imagem" >
 
             </Grid>
 

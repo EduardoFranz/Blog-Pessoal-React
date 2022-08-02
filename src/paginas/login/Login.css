@@ -1,3 +1,17 @@
+
+.textos1{
+    font-weight:bold;
+}
+
 .text-decorator-none{
     text-decoration: none;
+}
+
+.imagem{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0IT-OyaoYNWvvTHibh_SlFllf9E70TdJcmw&usqp=CAU);
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    width:100vh;
+    min-height:100vh;
 }
