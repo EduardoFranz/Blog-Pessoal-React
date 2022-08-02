@@ -3,9 +3,11 @@ import Navbar from './components/estaticos/navbar/Navbar';
 import Footer from './components/estaticos/footer/Footer';
 import Home from './paginas/home/Home';
 import Login from './paginas/login/Login';
+import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+
 
 function App() {
   return (
@@ -16,7 +18,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
-          {/* <Route path="/cadastro" element={<CadastroUsuario />} /> */}
+          <Route path="/cadastroUsuario" element={<CadastroUsuario />} />
         </Routes>
       </div>
       <Footer />
