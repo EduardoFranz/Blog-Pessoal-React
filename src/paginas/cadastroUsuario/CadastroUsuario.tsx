@@ -32,8 +32,10 @@ function CadastroUsuario() {
         })
 
     useEffect(() => {
-        if (userResult.id != 0) {
+        if (userResult.id !== 0) {
             navigate('/login')
+            console.log()
+            
         }
     }, [userResult])
 
@@ -53,16 +55,43 @@ function CadastroUsuario() {
 
     }
 
-    //enviar os dados para cadastro
-    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+    async function cadastrar(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        if(confirmarSenha == user.senha){
-        cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-        alert('Usuario cadastrado com sucesso')
-        }else{
-            alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+
+        // Estrutura Condicional que verifica se as senhas batem e se a Senha tem mais de 8 caracteres
+        if (confirmarSenha === user.senha && user.senha.length >= 5) {
+
+            //Tenta executar o cadastro
+            try {
+                await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
+                alert("Usuário cadastrado com sucesso")
+
+            //Se houver erro, pegue o Erro e retorna uma msg
+            } catch (error) {
+                console.log(`Error: ${error}`)
+                
+                //Pode modificar a msg de acordo com o erro 
+                alert("Usuário deve ser um e-mail!")
+            }
+
+        } else {
+            alert("Confirmação de senha deve ser igual senha e deve conter 5 caracteres ou mais.")    // Mensagem que indica a quantidade minima de caracteres
+
+            setUser({ ...user, senha: "" }) // Reinicia o campo de Senha
+            setConfirmarSenha("")           // Reinicia o campo de Confirmar Senha
         }
     }
+        
+    // //enviar os dados para cadastro maneira antiga de autentificação
+    // async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+    //     e.preventDefault()
+    //     if(confirmarSenha === user.senha){
+    //     cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
+    //     alert('Usuario cadastrado com sucesso')
+    //     }else{
+    //         alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+    //     }
+    // }
     
     return (
         <Grid container direction='row' justifyContent='center' alignItems='center'>
@@ -71,8 +100,9 @@ function CadastroUsuario() {
             </Grid>
             <Grid item xs={6} alignItems='center'>
                 <Box paddingX={10} >
-                    <form onSubmit={onSubmit}>
-                        <Typography variant='h3' color='textPrimary' component='h3' align='center' gutterBottom className="textos2" > Cadastrar </Typography>
+                    <form onSubmit={cadastrar}>
+                        <Typography variant='h3' color='textPrimary' component='h3' align='center' gutterBottom className="textos2" > Cadastrar 
+                        </Typography>
 
                         <TextField  value={user.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='nome' label='nome' variant='outlined' name='nome' margin='normal' fullWidth />
 
@@ -101,5 +131,6 @@ function CadastroUsuario() {
         </Grid>
     );
 }
+
 
 export default CadastroUsuario
