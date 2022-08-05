@@ -12,7 +12,12 @@ import './CadastroUsuario.css';
 function CadastroUsuario() {
 
     let navigate = useNavigate();
+
+    // verificar se o campo confirmar senha é igual o campo senha
     const [confirmarSenha,setConfirmarSenha] = useState<String>("")
+
+    // contém as informações que irei enviar para cadastro, como não possui nenhum cadastro os campos começam em 0 e vazios
+    // depois que 
     const [user, setUser] = useState<User>(
         {
             id: 0,
@@ -22,6 +27,7 @@ function CadastroUsuario() {
             foto:''
         })
 
+    // armazenar os valores do retorno da api - quando efetivo os dados para cadastro
     const [userResult, setUserResult] = useState<User>(
         {
             id: 0,
@@ -31,16 +37,19 @@ function CadastroUsuario() {
             foto:''
         })
 
+    //direcionando para tela de login - atraves do react-router-dom  
+    //será acionado após os envios das informações  
     useEffect(() => {
         if (userResult.id !== 0) {
             navigate('/login')
-            console.log()
+            
             
         }
     }, [userResult])
 
 
-    //capturar o que for digitado no campo confirmar senha
+    //será acionada em conjunto com o useState do confirmarSenha
+    //vai capturar o campo do confirmar senha
     function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>){
         setConfirmarSenha(e.target.value)
     }
