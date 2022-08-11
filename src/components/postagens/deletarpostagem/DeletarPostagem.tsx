@@ -36,8 +36,8 @@ function DeletarPostagem() {
         }
 
         function sim() {
-           navigate('/posts')
-            deleteId(`/postagens/${id}`, {
+           navigate('/postagens')             //rota do front
+            deleteId(`/postagens/${id}`, {   //rota do backend
               headers: {
                 'Authorization': token
               }
