@@ -14,9 +14,9 @@ function CadastroPost() {
     const [token, setToken] = useLocalStorage('token');
 
     useEffect(() => {
-        if (token === "") {
+        if (token == "") {
             alert("Você precisa estar logado")
-           navigate("/login")
+            navigate("/login")
 
         }
     }, [token])
@@ -96,7 +96,7 @@ function CadastroPost() {
     }
 
     function back() {
-       navigate('/posts')
+        navigate('/postagens')
     }
 
     return (

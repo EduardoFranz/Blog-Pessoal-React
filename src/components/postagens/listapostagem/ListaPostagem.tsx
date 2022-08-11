@@ -9,13 +9,12 @@ import { busca } from '../../../services/Service';
 
 
 function ListaPostagem() {
-
   const [posts, setPosts] = useState<Postagem[]>([])
   const [token, setToken] = useLocalStorage('token');
-  let navigate = useNavigate();
+  let navigate= useNavigate();
 
   useEffect(() => {
-    if (token === "" ) {
+    if (token == "") {
       alert("Você precisa estar logado")
       navigate("/login")
 
@@ -82,5 +81,6 @@ function ListaPostagem() {
     </>
   )
 }
+
 
 export default ListaPostagem;

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const api = axios.create({
-    baseURL:'https://bpeduardo2022.herokuapp.com'
+    baseURL:'https://blogp-generation.herokuapp.com'
 })
 
 // url-> /login , dados-> json, setDado -> token

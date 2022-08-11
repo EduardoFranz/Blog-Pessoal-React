@@ -8,6 +8,7 @@ import { buscaId, post, put } from '../../../services/Service';
 import './CadastroTema.css';
 
 function CadastroTema() {
+
     let navigate = useNavigate();
     const { id } = useParams<{id: string}>();
     const [token, setToken] = useLocalStorage('token');
@@ -29,6 +30,8 @@ function CadastroTema() {
             findById(id)
         }
     }, [id])
+
+   
 
     async function findById(id: string) {
         buscaId(`/temas/${id}`, setTema, {

@@ -30,12 +30,12 @@ function ListaTema() {
         //await vai aguardar o método busca da 'service.ts'
         //
         async function getTema(){
-          await busca ("/temas", setTemas, {
-            headers: {
-              'Authorization': token
-            }
-          })
-        }
+            await busca("/temas", setTemas, {
+              headers:{
+                'Authorization': token
+              }
+            })
+          }
       
         //sempre que o tamanho do temas modificar,ira acionar a função getTema
         useEffect(()=>{
@@ -65,14 +65,14 @@ function ListaTema() {
                             <Box display="flex" justifyContent="center" mb={1.5} >
                                 
                                 {/* crases para uso de template string , atualizar ou deletar tema de acordo com seu id*/}
-                                <Link to={`formularioTema/${tema.id}`} className="text-decorator-none">
+                                <Link to={`/formularioTema/${tema.id}`} className="text-decorator-none">
                                     <Box mx={1}>
                                         <Button variant="contained" className="marginLeft" size='small' color="primary" >
                                             atualizar
                                         </Button>
                                     </Box>
                                 </Link>
-                                <Link to={`deletarTema/${tema.id}`} className="text-decorator-none">
+                                <Link to={`/deletarTema/${tema.id}`} className="text-decorator-none">
                                     <Box mx={1}>
                                         <Button variant="contained" size='small' color="secondary">
                                             deletar

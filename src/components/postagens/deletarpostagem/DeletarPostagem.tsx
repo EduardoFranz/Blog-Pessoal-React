@@ -46,7 +46,7 @@ function DeletarPostagem() {
           }
         
           function nao() {
-           navigate('/posts')
+           navigate('/postagens')
           }
   return (
     <>

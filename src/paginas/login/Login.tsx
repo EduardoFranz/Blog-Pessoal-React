@@ -41,7 +41,7 @@ function Login(){
 
         //reponsáel pelo ciclo de vida de um componente-redirecionamento para pagina home após o token
         useEffect(()=>{
-            if(token != ''){
+            if(token !== ''){
                 navigate('/home')
 
             } 
