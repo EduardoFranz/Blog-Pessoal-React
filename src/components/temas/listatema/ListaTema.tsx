@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect, useState, } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button, Typography } from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
@@ -6,18 +6,21 @@ import CardActions from '@material-ui/core/CardActions';
 import Card from '@material-ui/core/Card';
 import { Box } from '@mui/material';
 import { busca } from '../../../services/Service';
-import useLocalStorage from 'react-use-localstorage';
 import Tema from '../../../models/Tema'
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/TokensReducer';
 import './ListaTema.css';
 
 function ListaTema() {
         
-        const [temas, setTemas] = useState<Tema[]>([])       //
-        const [token, setToken] = useLocalStorage('token'); //capturar o token que está armazenado no useLocalStorage
+        const [temas, setTemas] = useState<Tema[]>([])       
+
         let navigate = useNavigate();
-      
-        //se o usuario não estiver autenticado ele será redirecionado para tela de login
-        //se o token dele não estiver no local storage
+
+        const token = useSelector<TokenState, TokenState['tokens']>(
+            (state) => state.tokens
+        )
+     
         useEffect(()=>{
           if(token === ''){
             alert("Você precisa estar logado")
