@@ -1,24 +1,22 @@
-
-
 import React, {ChangeEvent, useState, useEffect} from "react";
 import { Typography, Grid, TextField, Button  } from "@material-ui/core";
 import { Box} from "@mui/material";
 import { Link , useNavigate } from "react-router-dom";
 
-
-
 import UserLogin from "../../models/UserLogin";
-import useLocalStorage from "react-use-localstorage";
 import { login } from "../../services/Service";
-
+import { useDispatch } from "react-redux";
 import './Login.css';
+import { addToken } from "../../store/tokens/Actions";
+
 
 function Login(){
 
     let navigate = useNavigate();
         
+    const dispatch = useDispatch()
 
-    const[token, setToken] = useLocalStorage('token');    
+    const[token, setToken] = useState('');    
 
     const[userLogin, setUserLogin] = useState<UserLogin>(
         {
@@ -42,6 +40,7 @@ function Login(){
         //reponsáel pelo ciclo de vida de um componente-redirecionamento para pagina home após o token
         useEffect(()=>{
             if(token !== ''){
+                dispatch(addToken(token))
                 navigate('/home')
 
             } 
