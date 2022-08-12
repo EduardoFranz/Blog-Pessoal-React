@@ -6,13 +6,13 @@ import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
 
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/TokensReducer';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Home.css';
 
 function Home() {
 
     let navigate = useNavigate();
-    
+
     const token = useSelector<TokenState, TokenState['tokens']>(
         (state) => state.tokens
     )
@@ -37,7 +37,11 @@ function Home() {
                         <Box marginRight={1}>
                             <ModalPostagem />
                         </Box>
-                        <Button className="button" variant="outlined">Ver Postagens</Button>
+
+                        <Link to="/postagens" className='text-decorator-none'>
+                            <Button className="button" variant="outlined">Ver Postagens</Button>
+                        </Link>
+
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
