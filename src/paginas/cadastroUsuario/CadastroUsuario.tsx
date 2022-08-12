@@ -7,6 +7,7 @@ import { cadastroUsuario } from '../../services/Service';
 import User from '../../models/User';
 
 import './CadastroUsuario.css';
+import { toast } from 'react-toastify';
 
 
 function CadastroUsuario() {
@@ -73,18 +74,42 @@ function CadastroUsuario() {
             //Tenta executar o cadastro
             try {
                 await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-                alert("Usuário cadastrado com sucesso")
+                toast.success('Usuário cadastrado com sucesso', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });
 
             //Se houver erro, pegue o Erro e retorna uma msg
             } catch (error) {
                 console.log(`Error: ${error}`)
                 
                 //Pode modificar a msg de acordo com o erro 
-                alert("Usuário deve ser um e-mail!")
+                toast.error('Usuário deve ser um e-mail', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });
             }
 
         } else {
-            alert("Confirmação de senha deve ser igual senha e deve conter 5 caracteres ou mais.")    // Mensagem que indica a quantidade minima de caracteres
+            toast.error('Confirmação de senha deve ser iguala senha e deve conter 5 caracteres ou mais', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });   // Mensagem que indica a quantidade minima de caracteres
 
             setUser({ ...user, senha: "" }) // Reinicia o campo de Senha
             setConfirmarSenha("")           // Reinicia o campo de Confirmar Senha
